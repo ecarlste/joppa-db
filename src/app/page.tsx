@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 const mockWeaponNames = ["Weapon 1", "Weapon 2", "Weapon 3"];
 
 const mockWeapons = mockWeaponNames.map((name, index) => ({
