@@ -2,8 +2,10 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { sql } from "drizzle-orm";
+import { integer, numeric } from "drizzle-orm/pg-core";
 import {
   index,
+  pgEnum,
   pgTableCreator,
   serial,
   timestamp,
@@ -16,13 +18,35 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
+
+export const weaponTypeEnum = pgEnum("weapon_type", [
+  "club",
+  "mace",
+  "stave",
+  "great_hammer",
+  "great_mace",
+  "axe",
+  "sword",
+  "great_axe",
+  "great_blade",
+  "great_sword",
+  "dagger",
+  "short_spear",
+  "long_spear",
+  "halberd",
+]);
+
 export const createTable = pgTableCreator((name) => `joppa-db_${name}`);
 
-export const posts = createTable(
-  "post",
+export const weapons = createTable(
+  "weapon",
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }),
+    weaponType: weaponTypeEnum("weapon_type"),
+    minimumDamage: integer("minimum_damage"),
+    maximumDamage: integer("maximum_damage"),
+    delay: numeric("delay"),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -30,5 +54,5 @@ export const posts = createTable(
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
