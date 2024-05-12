@@ -32,7 +32,7 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] Scaffold basic UI with mock data
 - [x] Set up a database (vercel postgres)
 - [x] Attach database to UI
-- [ ] add authentication (clerk)
+- [x] add authentication (clerk)
 - [ ] add weapon creation form
 - [ ] set up error handling (sentry)
 - [ ] routing/weapons page
