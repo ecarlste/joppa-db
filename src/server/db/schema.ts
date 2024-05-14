@@ -2,7 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { sql } from "drizzle-orm";
-import { integer, numeric } from "drizzle-orm/pg-core";
+import { doublePrecision, integer, numeric } from "drizzle-orm/pg-core";
 import {
   index,
   pgEnum,
@@ -42,11 +42,11 @@ export const weapons = createTable(
   "weapon",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
-    weaponType: weaponTypeEnum("weapon_type"),
-    minimumDamage: integer("minimum_damage"),
-    maximumDamage: integer("maximum_damage"),
-    delay: numeric("delay"),
+    name: varchar("name", { length: 256 }).notNull(),
+    weaponType: weaponTypeEnum("weapon_type").notNull(),
+    minimumDamage: integer("minimum_damage").notNull(),
+    maximumDamage: integer("maximum_damage").notNull(),
+    delay: doublePrecision("delay").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),

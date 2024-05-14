@@ -34,9 +34,9 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] Attach database to UI
 - [x] add authentication (clerk)
 - [x] Setup shadui and fix up nav menu
-- [ ] Build weapon list item react component
-- [ ] Finish weapon list page
-- [ ] add weapon creation form
+- [x] Create weapon list page w/ shadui Data Table
+- [ ] add weapon creation form (only when logged in)
+- [ ] Implement weapon edit flow (only when logged in)
 - [ ] set up error handling (sentry)
 - [ ] routing/weapons page
 - [ ] analytics (posthog)
