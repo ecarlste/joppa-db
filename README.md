@@ -39,6 +39,8 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] Use Zod for the Weapon Data Table schema (this will also be used for the weapon creation form)
 - [x] add sorting by Name and Weapon Type on Weapon Data Table
 - [x] fix weapon DB schema to use a single damage field
+- [x] remove sorting of weapons by name
+- [x] add delay field back into weapon data table and add sorting for it
 - [ ] add sorting by DPS on Weapon Data Table
 - [ ] add weapon creation form (only when logged in)
 - [ ] Implement weapon edit flow (only when logged in)
