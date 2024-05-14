@@ -2,15 +2,17 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { sql } from "drizzle-orm";
-import { doublePrecision, integer, numeric } from "drizzle-orm/pg-core";
 import {
+  doublePrecision,
   index,
+  integer,
   pgEnum,
   pgTableCreator,
   serial,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
+import { createSelectSchema } from "drizzle-zod";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -56,3 +58,5 @@ export const weapons = createTable(
     nameIndex: index("name_idx").on(example.name),
   }),
 );
+
+export const SelectWeaponSchema = createSelectSchema(weapons);
