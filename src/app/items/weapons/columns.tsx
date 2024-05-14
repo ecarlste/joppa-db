@@ -25,29 +25,38 @@ export const columns: ColumnDef<Weapon>[] = [
     },
   },
   {
-    accessorKey: "weaponType",
+    accessorKey: "type",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Weapon Type
+          Type
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
   {
-    accessorFn: (row) => `${row.minimumDamage}-${row.maximumDamage}`,
-    header: "Damage",
+    accessorKey: "damage",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Damage
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     header: "DPS",
     accessorFn: (row) => {
-      const { minimumDamage, maximumDamage, delay } = row;
-      const averageDamage = (minimumDamage + maximumDamage) / 2;
-      return (averageDamage / delay).toFixed(2);
+      const { damage, delay } = row;
+      return (damage / delay).toFixed(2);
     },
   },
 ];
