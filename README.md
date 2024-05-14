@@ -37,7 +37,8 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] Create weapon list page w/ shadui Data Table
 - [x] Display damage as one table field on Weapon table
 - [x] Use Zod for the Weapon Data Table schema (this will also be used for the weapon creation form)
-- [ ] add sorting by field on Weapon Data Table
+- [x] add sorting by Name and Weapon Type on Weapon Data Table
+- [ ] add sorting by DPS on Weapon Data Table
 - [ ] add weapon creation form (only when logged in)
 - [ ] Implement weapon edit flow (only when logged in)
 - [ ] set up error handling (sentry)
