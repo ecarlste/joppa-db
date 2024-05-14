@@ -12,17 +12,7 @@ export type Weapon = z.infer<typeof SelectWeaponSchema>;
 export const columns: ColumnDef<Weapon>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: "Name",
   },
   {
     accessorKey: "type",
@@ -47,6 +37,20 @@ export const columns: ColumnDef<Weapon>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Damage
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  },
+  {
+    accessorKey: "delay",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Delay
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
