@@ -45,9 +45,8 @@ export const weapons = createTable(
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
-    weaponType: weaponTypeEnum("weapon_type").notNull(),
-    minimumDamage: integer("minimum_damage").notNull(),
-    maximumDamage: integer("maximum_damage").notNull(),
+    type: weaponTypeEnum("type").notNull(),
+    damage: integer("damage").notNull(),
     delay: doublePrecision("delay").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
