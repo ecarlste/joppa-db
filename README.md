@@ -33,7 +33,7 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] Set up a database (vercel postgres)
 - [x] Attach database to UI
 - [x] add authentication (clerk)
-- [ ] Setup shadui and fix up nav menu
+- [x] Setup shadui and fix up nav menu
 - [ ] Build weapon list item react component
 - [ ] Finish weapon list page
 - [ ] add weapon creation form
