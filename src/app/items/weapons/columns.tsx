@@ -21,15 +21,15 @@ export const columns: ColumnDef<Weapon>[] = [
     accessorKey: "weaponType",
   },
   {
-    header: "Min Damage",
-    accessorKey: "minimumDamage",
+    header: "Damage",
+    accessorFn: (row) => `${row.minimumDamage}-${row.maximumDamage}`,
   },
   {
-    header: "Max Damage",
-    accessorKey: "maximumDamage",
-  },
-  {
-    header: "Delay",
-    accessorKey: "delay",
+    header: "DPS",
+    accessorFn: (row) => {
+      const { minimumDamage, maximumDamage, delay } = row;
+      const averageDamage = (minimumDamage + maximumDamage) / 2;
+      return (averageDamage / delay).toFixed(2);
+    },
   },
 ];
