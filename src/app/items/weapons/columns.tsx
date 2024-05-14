@@ -1,15 +1,11 @@
 "use client";
 
 import { type ColumnDef } from "@tanstack/react-table";
+import { type z } from "zod";
 
-export type Weapon = {
-  id: number;
-  name: string;
-  weaponType: string;
-  minimumDamage: number;
-  maximumDamage: number;
-  delay: number;
-};
+import { type SelectWeaponSchema } from "~/server/db/schema";
+
+export type Weapon = z.infer<typeof SelectWeaponSchema>;
 
 export const columns: ColumnDef<Weapon>[] = [
   {
