@@ -57,10 +57,21 @@ export const columns: ColumnDef<Weapon>[] = [
     },
   },
   {
-    header: "DPS",
+    id: "dps",
     accessorFn: (row) => {
       const { damage, delay } = row;
       return (damage / delay).toFixed(2);
+    },
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          DPS
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
     },
   },
 ];
