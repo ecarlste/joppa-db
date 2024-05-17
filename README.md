@@ -43,6 +43,7 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] add delay field back into weapon data table and add sorting for it
 - [x] add sorting by DPS on Weapon Data Table
 - [x] line up column data with the header text in the Weapon Data Table
+- [x] update pnpm version so CI passes again
 - [ ] create classes page
 - [ ] create individual class page (this page shows all class abilities)
 - [ ] add DB schema for classes and class abilities
