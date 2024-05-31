@@ -18,18 +18,19 @@ This step is only necessary for running the project using WSL.
 
 You can find instructions for running VSCode in WSL mode [here](https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace).
 
-### Installing `pnpm`
+### Installing `asdf`
 
-First, let's install pnpm using the following command:
+Follow the instructions on the `asdf` [Getting Started](https://asdf-vm.com/guide/getting-started.html) page to install `asdf`.
 
-```sh
-curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=9.0.4 sh -p
-```
+### Installing Node.js and `pnpm` Using `asdf`
 
-Follow the instructions provided at the end of the install output to source the changes to your shell configuration file. The command provided vary based on your shell, and should look something like this:
+Once you've installed `asdf`, run the following commands to install both Node.js and `pnpm`:
 
 ```sh
-source /home/myusername/.zshrc
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add pnpm
+
+asdf install
 ```
 
 ### Install Node.js Dependencies
