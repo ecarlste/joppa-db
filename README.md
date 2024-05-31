@@ -35,9 +35,7 @@ asdf install
 
 ### Install Node.js Dependencies
 
-Once you have `pnpm` installed, you can use it to install both Node.js and the project dependencies. The Node.js version is set in the `.npmrc` file at the project root.
-
-Install the project dependencies by running the following command:
+Once you have `pnpm` installed, you can use it to install the project dependencies by running the following command:
 
 ```sh
 pnpm install
