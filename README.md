@@ -4,17 +4,53 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 ## Getting Started
 
-### Setting up Window Subsystem for Linux (WSL)
+### Installing up Window Subsystem for Linux (Windows only)
 
-These steps are only necessary if running this projects on Windows 10/11.
+This step is only necessary if running this projects on Windows 10/11.
 
 Currently, we are using Windows for Subsystem for Linux (WSL) version 2 to run this project on Windows 11. The distribution of linux that we are using is `Ubuntu 22.04.3 LTS`.
 
 You can find documentation about installing and setting up WSL on the [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install) page.
 
-### Running VSCode in WSL Mode
+### Running VSCode in WSL Mode (Windows only)
+
+This step is only necessary for running the project using WSL.
 
 You can find instructions for running VSCode in WSL mode [here](https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace).
+
+### Installing `pnpm`
+
+First, let's install pnpm using the following command:
+
+```sh
+curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=9.0.4 sh -p
+```
+
+Follow the instructions provided at the end of the install output to source the changes to your shell configuration file. The command provided vary based on your shell, and should look something like this:
+
+```sh
+source /home/myusername/.zshrc
+```
+
+### Install Node.js Dependencies
+
+Once you have `pnpm` installed, you can use it to install both Node.js and the project dependencies. The Node.js version is set in the `.npmrc` file at the project root.
+
+Install the project dependencies by running the following command:
+
+```sh
+pnpm install
+```
+
+### Setting up Your Local .env File
+
+From the root of the project, run the following command to create your initial `.env` file.
+
+```sh
+cp .env.example .env
+```
+
+This will create a `.env` file that you will NEVER check into version control. This file will only exist on your computer.
 
 ## What's next? How do I make an app with this?
 
