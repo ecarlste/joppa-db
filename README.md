@@ -2,6 +2,20 @@
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
+## Getting Started
+
+### Setting up Window Subsystem for Linux (WSL)
+
+These steps are only necessary if running this projects on Windows 10/11.
+
+Currently, we are using Windows for Subsystem for Linux (WSL) version 2 to run this project on Windows 11. The distribution of linux that we are using is `Ubuntu 22.04.3 LTS`.
+
+You can find documentation about installing and setting up WSL on the [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install) page.
+
+### Running VSCode in WSL Mode
+
+You can find instructions for running VSCode in WSL mode [here](https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace).
+
 ## What's next? How do I make an app with this?
 
 We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
