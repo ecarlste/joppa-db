@@ -3,7 +3,9 @@ import { db } from "~/server/db";
 import { characterClass } from "~/server/db/schema";
 
 async function fetchCharacterClasses() {
-  const result = await db.select().from(characterClass);
+  const result = await db
+    .select({ id: characterClass.id, name: characterClass.name })
+    .from(characterClass);
 
   return result;
 }
