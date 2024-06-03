@@ -5,9 +5,9 @@ import { ArrowUpDown } from "lucide-react";
 import { type z } from "zod";
 
 import { Button } from "~/components/ui/button";
-import { type SelectWeaponSchema } from "~/server/db/schema";
+import { type selectWeaponSchema } from "~/server/db/schema";
 
-export type Weapon = z.infer<typeof SelectWeaponSchema>;
+export type Weapon = z.infer<typeof selectWeaponSchema>;
 
 export const columns: ColumnDef<Weapon>[] = [
   {

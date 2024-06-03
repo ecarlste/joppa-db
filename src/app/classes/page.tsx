@@ -1,17 +1,34 @@
 import Link from "next/link";
+import { Card, CardHeader } from "~/components/ui/card";
 import { db } from "~/server/db";
-import { characterClass } from "~/server/db/schema";
+import { playerClass, type PlayerClass } from "~/server/db/schema";
 
-async function fetchCharacterClasses() {
+async function fetchPlayerClasses() {
   const result = await db
-    .select({ id: characterClass.id, name: characterClass.name })
-    .from(characterClass);
+    .select({
+      id: playerClass.id,
+      name: playerClass.name,
+      summary: playerClass.summary,
+    })
+    .from(playerClass);
 
   return result;
 }
 
-export default async function ClassesPage() {
-  const classes = await fetchCharacterClasses();
+export function PlayerClassSummaryCard({
+  playerClass,
+}: {
+  playerClass: PlayerClass;
+}) {
+  return (
+    <Card>
+      <CardHeader>{playerClass.name}</CardHeader>
+    </Card>
+  );
+}
+
+export default async function PlayerClassesPage() {
+  const classes = await fetchPlayerClasses();
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
@@ -19,9 +36,9 @@ export default async function ClassesPage() {
         Classes
       </h1>
       <div className="flex flex-col items-center">
-        {classes.map((characterClass) => (
-          <Link key={characterClass.id} href={`/classes/${characterClass.id}`}>
-            {characterClass.name}
+        {classes.map((playerClass) => (
+          <Link key={playerClass.id} href={`/classes/${playerClass.id}`}>
+            <PlayerClassSummaryCard playerClass={playerClass} />
           </Link>
         ))}
       </div>

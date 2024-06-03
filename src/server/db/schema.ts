@@ -13,6 +13,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 import { createSelectSchema } from "drizzle-zod";
+import { type z } from "zod";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -58,7 +59,7 @@ export const weapons = createTable(
   }),
 );
 
-export const classNameEnum = pgEnum("class_name", [
+export const playerClassNameEnum = pgEnum("class_name", [
   "Cleric",
   "Dire Lord",
   "Druid",
@@ -73,15 +74,41 @@ export const classNameEnum = pgEnum("class_name", [
   "Wizard",
 ]);
 
-export const characterClass = createTable("class", {
+export const playerClass = createTable("class", {
   id: serial("id").primaryKey(),
-  name: classNameEnum("name").notNull().unique(),
+  name: playerClassNameEnum("name").notNull().unique(),
+  summary: varchar("summary", { length: 256 }).notNull(),
 });
 
-export const classAbilities = createTable("class_ability", {
+export const playerClassAbilities = createTable("class_ability", {
   id: serial("id").primaryKey(),
-  classId: integer("class_id").references(() => characterClass.id),
+  classId: integer("class_id").references(() => playerClass.id),
   name: varchar("name", { length: 256 }).notNull(),
 });
 
-export const SelectWeaponSchema = createSelectSchema(weapons);
+export const selectWeaponSchema = createSelectSchema(weapons);
+export type Weapon = z.infer<typeof selectWeaponSchema>;
+
+export const selectPlayerClassSchema = createSelectSchema(playerClass);
+export type PlayerClass = z.infer<typeof selectPlayerClassSchema>;
+
+// cleric
+// IN THE FRAIL AGE, COMMUNION WITH CELESTIALS IS UNHEARD OF. THE CLERIC MUST BIND TO ANCIENT TOMES CONTAINING THE LAST VESTIGES FLIGHT FROM WHEN THE CELESTIALS HAD DRAWN NEAR.
+
+// direlord
+// LEGENDS SPEAK OF DIRE LORDS CAPABLE OF MASTERING THE CRIPPLING POWER OF FEAR, WITH SOME ABLE TO MANIPULATE THE ‘ESSENCE’ OF LIVING THINGS — EVEN THEIR VERY BLOOD.
+
+// druid
+// AMIDST THE FRAGMENTED REALMS, THE WILD-EYED DRUID EMBRACES THE DIVERSE, NATURAL WORLD, PEERING INTO ITS MYSTERIES. DRUIDS ARE REVERED AS VISIONARIES WHO CAN SEE INTO THE HEART OF TERMINUS.
+
+// enchanter
+// THROUGH A SINGLE WORD, THE ENCHANTER CAN TURN THE INTENT OF AN ENEMY AND BREAK EVEN THE STRONGEST OF WILLS INTO SUBMISSION.
+
+// monk
+// Through longstanding discipline and unwavering obedience to ancient teachings, the monk wields their mind and body as a devastating, holistic weapon against their enemies.
+
+// paladin
+// Once a cleric, the paladin has a call transcending the customs of the cleric order. Led by her convictions, she sets off to carry out her own righteous judgment.
+
+// summoner
+// THE SUMMONER HAS DEVELOPED A POWERFUL ARCANE COMMAND TO CONJURE SUSTENANCE, TOOLS, BARRICADES, WEAPONRY, EVEN FANTASTIC CREATURES OF INCREDIBLE STRENGTH – ALL OF THIS AT HER WHIM.
