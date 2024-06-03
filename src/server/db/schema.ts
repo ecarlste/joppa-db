@@ -93,7 +93,7 @@ export const selectPlayerClassSchema = createSelectSchema(playerClass);
 export type PlayerClass = z.infer<typeof selectPlayerClassSchema>;
 
 // cleric
-// IN THE FRAIL AGE, COMMUNION WITH CELESTIALS IS UNHEARD OF. THE CLERIC MUST BIND TO ANCIENT TOMES CONTAINING THE LAST VESTIGES FLIGHT FROM WHEN THE CELESTIALS HAD DRAWN NEAR.
+// In the frail age, communion with celestials is unheard of. The cleric must bind to ancient tomes containing the last vestiges flight from when the celestials had drawn near.
 
 // direlord
 // LEGENDS SPEAK OF DIRE LORDS CAPABLE OF MASTERING THE CRIPPLING POWER OF FEAR, WITH SOME ABLE TO MANIPULATE THE ‘ESSENCE’ OF LIVING THINGS — EVEN THEIR VERY BLOOD.

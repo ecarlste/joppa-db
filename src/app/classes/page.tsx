@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardHeader } from "~/components/ui/card";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { db } from "~/server/db";
 import { playerClass, type PlayerClass } from "~/server/db/schema";
 
@@ -22,14 +22,19 @@ export function PlayerClassSummaryCard({
 }) {
   return (
     <Card
-      className="aspect-square w-full bg-cover"
+      className="flex aspect-square w-full flex-col justify-between bg-cover"
       style={{
         backgroundImage: `url('/img/classes/${convertToLoverRemoveSpaces(
           playerClass.name,
         )}.jpeg')`,
       }}
     >
-      <CardHeader>{playerClass.name}</CardHeader>
+      <CardHeader className="text-2xl font-bold text-slate-200">
+        {playerClass.name}
+      </CardHeader>
+      <CardContent className="bg-slate-800 bg-opacity-50 pt-4 text-xl text-white">
+        {playerClass.summary}
+      </CardContent>
     </Card>
   );
 }
@@ -45,11 +50,11 @@ export default async function PlayerClassesPage() {
     <div className="flex w-full">
       <div className="mx-auto flex w-full max-w-screen-xl flex-col">
         <div className="flex justify-center">
-          <h1 className="py-8 text-xl font-extrabold tracking-tight">
-            Classes
+          <h1 className="py-8 text-3xl font-extrabold tracking-tight">
+            Player Classes
           </h1>
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 gap-8">
           {classes.map((playerClass) => (
             <Link key={playerClass.id} href={`/classes/${playerClass.id}`}>
               <PlayerClassSummaryCard playerClass={playerClass} />
