@@ -11,6 +11,9 @@ export function TopNav() {
         <div className="text-lg">
           <Link href="/items/weapons">Weapons</Link>
         </div>
+        <div className="text-lg">
+          <Link href="/classes">Classes</Link>
+        </div>
       </div>
 
       <div>

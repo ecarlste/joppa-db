@@ -93,9 +93,11 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] add sorting by DPS on Weapon Data Table
 - [x] line up column data with the header text in the Weapon Data Table
 - [x] update pnpm version so CI passes again
-- [ ] create classes page
-- [ ] create individual class page (this page shows all class abilities)
-- [ ] add DB schema for classes and class abilities
+- [x] create initial classes page connected to db
+- [x] create initial individual class page connected to db
+- [x] add initial DB schema for classes and class abilities
+- [ ] add class abilities to class page
+- [ ] add class display cards to classes page
 - [ ] add weapon creation form (only when logged in)
 - [ ] Implement weapon edit flow (only when logged in)
 - [ ] set up error handling (sentry)

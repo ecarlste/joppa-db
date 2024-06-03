@@ -58,4 +58,30 @@ export const weapons = createTable(
   }),
 );
 
+export const classNameEnum = pgEnum("class_name", [
+  "Cleric",
+  "Dire Lord",
+  "Druid",
+  "Enchanter",
+  "Monk",
+  "Paladin",
+  "Ranger",
+  "Rogue",
+  "Shaman",
+  "Summoner",
+  "Warrior",
+  "Wizard",
+]);
+
+export const characterClass = createTable("class", {
+  id: serial("id").primaryKey(),
+  name: classNameEnum("name").notNull().unique(),
+});
+
+export const classAbilities = createTable("class_ability", {
+  id: serial("id").primaryKey(),
+  classId: integer("class_id").references(() => characterClass.id),
+  name: varchar("name", { length: 256 }).notNull(),
+});
+
 export const SelectWeaponSchema = createSelectSchema(weapons);
