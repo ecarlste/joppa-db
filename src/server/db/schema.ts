@@ -75,7 +75,7 @@ export const classNameEnum = pgEnum("class_name", [
 
 export const characterClass = createTable("class", {
   id: serial("id").primaryKey(),
-  name: varchar("name", { length: 256 }).notNull(),
+  name: classNameEnum("name").notNull(),
 });
 
 export const classAbilities = createTable("class_ability", {
