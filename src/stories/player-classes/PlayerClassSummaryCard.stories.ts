@@ -15,6 +15,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Monk: Story = {
+  args: {
+    playerClass: {
+      id: 1,
+      name: "Monk",
+      summary: "A martial artist who uses their body as a weapon.",
+    },
+  },
+};
+
 export const Paladin: Story = {
   args: {
     playerClass: {
