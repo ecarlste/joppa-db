@@ -91,24 +91,3 @@ export type Weapon = z.infer<typeof selectWeaponSchema>;
 
 export const selectPlayerClassSchema = createSelectSchema(playerClass);
 export type PlayerClass = z.infer<typeof selectPlayerClassSchema>;
-
-// cleric
-// In the frail age, communion with celestials is unheard of. The cleric must bind to ancient tomes containing the last vestiges flight from when the celestials had drawn near.
-
-// direlord
-// LEGENDS SPEAK OF DIRE LORDS CAPABLE OF MASTERING THE CRIPPLING POWER OF FEAR, WITH SOME ABLE TO MANIPULATE THE ‘ESSENCE’ OF LIVING THINGS — EVEN THEIR VERY BLOOD.
-
-// druid
-// AMIDST THE FRAGMENTED REALMS, THE WILD-EYED DRUID EMBRACES THE DIVERSE, NATURAL WORLD, PEERING INTO ITS MYSTERIES. DRUIDS ARE REVERED AS VISIONARIES WHO CAN SEE INTO THE HEART OF TERMINUS.
-
-// enchanter
-// THROUGH A SINGLE WORD, THE ENCHANTER CAN TURN THE INTENT OF AN ENEMY AND BREAK EVEN THE STRONGEST OF WILLS INTO SUBMISSION.
-
-// monk
-// Through longstanding discipline and unwavering obedience to ancient teachings, the monk wields their mind and body as a devastating, holistic weapon against their enemies.
-
-// paladin
-// Once a cleric, the paladin has a call transcending the customs of the cleric order. Led by her convictions, she sets off to carry out her own righteous judgment.
-
-// summoner
-// THE SUMMONER HAS DEVELOPED A POWERFUL ARCANE COMMAND TO CONJURE SUSTENANCE, TOOLS, BARRICADES, WEAPONRY, EVEN FANTASTIC CREATURES OF INCREDIBLE STRENGTH – ALL OF THIS AT HER WHIM.
