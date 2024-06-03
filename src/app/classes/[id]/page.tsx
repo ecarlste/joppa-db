@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { db } from "~/server/db";
-import { characterClass } from "~/server/db/schema";
+import { playerClass } from "~/server/db/schema";
 
 async function fetchCharacterClass(id: number) {
   const result = await db
     .select()
-    .from(characterClass)
-    .where(eq(characterClass.id, id));
+    .from(playerClass)
+    .where(eq(playerClass.id, id));
 
   return result[0];
 }

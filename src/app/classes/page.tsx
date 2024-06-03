@@ -1,29 +1,66 @@
 import Link from "next/link";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { db } from "~/server/db";
-import { characterClass } from "~/server/db/schema";
+import { playerClass, type PlayerClass } from "~/server/db/schema";
 
-async function fetchCharacterClasses() {
+async function fetchPlayerClasses() {
   const result = await db
-    .select({ id: characterClass.id, name: characterClass.name })
-    .from(characterClass);
+    .select({
+      id: playerClass.id,
+      name: playerClass.name,
+      summary: playerClass.summary,
+    })
+    .from(playerClass);
 
   return result;
 }
 
-export default async function ClassesPage() {
-  const classes = await fetchCharacterClasses();
+export function PlayerClassSummaryCard({
+  playerClass,
+}: {
+  playerClass: PlayerClass;
+}) {
+  return (
+    <Card
+      className="flex aspect-square w-full flex-col justify-between bg-cover"
+      style={{
+        backgroundImage: `url('/img/classes/${convertToLoverRemoveSpaces(
+          playerClass.name,
+        )}.jpeg')`,
+      }}
+    >
+      <CardHeader className="text-2xl font-bold text-slate-200">
+        {playerClass.name}
+      </CardHeader>
+      <CardContent className="bg-slate-800 bg-opacity-50 pt-4 text-xl text-white">
+        {playerClass.summary}
+      </CardContent>
+    </Card>
+  );
+}
+
+function convertToLoverRemoveSpaces(str: string) {
+  return str.toLowerCase().replace(/\s/g, "");
+}
+
+export default async function PlayerClassesPage() {
+  const classes = await fetchPlayerClasses();
 
   return (
-    <div className="flex w-full flex-col items-center justify-center">
-      <h1 className="scroll-m-20 py-8 text-xl font-extrabold tracking-tight">
-        Classes
-      </h1>
-      <div className="flex flex-col items-center">
-        {classes.map((characterClass) => (
-          <Link key={characterClass.id} href={`/classes/${characterClass.id}`}>
-            {characterClass.name}
-          </Link>
-        ))}
+    <div className="flex w-full">
+      <div className="mx-auto flex w-full max-w-screen-xl flex-col">
+        <div className="flex justify-center">
+          <h1 className="py-8 text-3xl font-extrabold tracking-tight">
+            Player Classes
+          </h1>
+        </div>
+        <div className="grid grid-cols-3 gap-8">
+          {classes.map((playerClass) => (
+            <Link key={playerClass.id} href={`/classes/${playerClass.id}`}>
+              <PlayerClassSummaryCard playerClass={playerClass} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
