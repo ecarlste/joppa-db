@@ -54,7 +54,7 @@ export default async function PlayerClassesPage() {
             Player Classes
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-3 px-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {classes.map((playerClass) => (
             <Link key={playerClass.id} href={`/classes/${playerClass.id}`}>
               <PlayerClassSummaryCard playerClass={playerClass} />
