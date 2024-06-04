@@ -80,10 +80,23 @@ export const playerClass = createTable("class", {
   summary: varchar("summary", { length: 256 }).notNull(),
 });
 
+export const abilityCostResourceEnum = pgEnum("ability_cost_resource", ["Reckoning", "Wrath"]);
+export const abilityMagicTypeEnum = pgEnum("ability_magic_type", ["Divine", "Physical"]);
+export const abilityTargetTypeEnum = pgEnum("ability_target_type", ["Self", "Defensive", "Offensive"]);
+
 export const playerClassAbilities = createTable("class_ability", {
   id: serial("id").primaryKey(),
   classId: integer("class_id").references(() => playerClass.id),
   name: varchar("name", { length: 256 }).notNull(),
+  level: integer("level").notNull(),
+  cost: integer("cost").notNull().default(0),
+  costResource: abilityCostResourceEnum("cost_resource"),
+  range: integer("range").notNull().default(0),
+  castTime: doublePrecision("cast_time").notNull().default(0),
+  cooldown: doublePrecision("cooldown").notNull().default(0),
+  magicType: abilityMagicTypeEnum("magic_type"),
+  targetType: abilityTargetTypeEnum("target_type").notNull(),
+  description: varchar("description", { length: 1024 }).notNull(),
 });
 
 export const selectWeaponSchema = createSelectSchema(weapons);
@@ -91,3 +104,6 @@ export type Weapon = z.infer<typeof selectWeaponSchema>;
 
 export const selectPlayerClassSchema = createSelectSchema(playerClass);
 export type PlayerClass = z.infer<typeof selectPlayerClassSchema>;
+
+export const selectPlayerClassAbilitiesSchema = createSelectSchema(playerClassAbilities);
+export type PlayerClassAbility = z.infer<typeof selectPlayerClassAbilitiesSchema>;
