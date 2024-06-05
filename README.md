@@ -96,8 +96,10 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 - [x] create initial classes page connected to db
 - [x] create initial individual class page connected to db
 - [x] add initial DB schema for classes and class abilities
-- [ ] add class abilities to class page
 - [x] add class display cards to classes page
+- [x] implement class dropdown navigation menu
+- [ ] get navigation menu working properly for small mobile devices
+- [ ] add class abilities to class page
 - [ ] add weapon creation form (only when logged in)
 - [ ] Implement weapon edit flow (only when logged in)
 - [ ] set up error handling (sentry)
