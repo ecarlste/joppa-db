@@ -3,8 +3,7 @@ import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import { TopNav } from "./_components/topnav";
-import { playerClass } from "~/server/db/schema";
-import { db } from "~/server/db";
+import { fetchPlayerClasses } from "~/lib/data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,16 +29,4 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </html>
     </ClerkProvider>
   );
-}
-
-async function fetchPlayerClasses() {
-  const result = await db
-    .select({
-      id: playerClass.id,
-      name: playerClass.name,
-      summary: playerClass.summary,
-    })
-    .from(playerClass);
-
-  return result;
 }

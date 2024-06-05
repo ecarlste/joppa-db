@@ -1,19 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
-import { db } from "~/server/db";
-import { playerClass, type PlayerClass } from "~/server/db/schema";
-
-async function fetchPlayerClasses() {
-  const result = await db
-    .select({
-      id: playerClass.id,
-      name: playerClass.name,
-      summary: playerClass.summary,
-    })
-    .from(playerClass);
-
-  return result;
-}
+import { fetchPlayerClasses } from "~/lib/data";
+import { type PlayerClass } from "~/server/db/schema";
 
 export function PlayerClassSummaryCard({ playerClass }: { playerClass: PlayerClass }) {
   return (
