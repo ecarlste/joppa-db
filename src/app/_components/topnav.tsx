@@ -38,11 +38,16 @@ export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
                 <NavigationMenuTrigger>Classes</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    {playerClasses.map((playerClass) => (
-                      <ListItem key={playerClass.id} title={playerClass.name} href={`/classes/${playerClass.id}`}>
-                        {playerClass.summary}
-                      </ListItem>
-                    ))}
+                    <ListItem title="Browse Classes" href="/classes" liClassName="md:col-span-2">
+                      Browse through all of the classes available in Pantheon: Rise of the Fallen.
+                    </ListItem>
+                    {playerClasses
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map((playerClass) => (
+                        <ListItem key={playerClass.id} title={playerClass.name} href={`/classes/${playerClass.id}`}>
+                          {playerClass.summary}
+                        </ListItem>
+                      ))}
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -63,25 +68,26 @@ export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
   );
 }
 
-const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
-  ({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-              className,
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    );
-  },
-);
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a"> & { liClassName?: string }
+>(({ className, title, children, liClassName, ...props }, ref) => {
+  return (
+    <li className={liClassName}>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className,
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
 ListItem.displayName = "ListItem";
