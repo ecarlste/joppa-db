@@ -13,29 +13,9 @@ import {
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
 import { cn } from "~/lib/utils";
+import { type PlayerClass } from "~/server/db/schema";
 
-const playerClasses = [
-  {
-    name: "Cleric",
-    id: 7,
-    summary:
-      "In the frail age, communion with celestials is unheard of. The cleric must bind to ancient tomes containing the last vestiges flight from when the celestials had drawn near.",
-  },
-  {
-    name: "Dire Lord",
-    id: 8,
-    summary:
-      "Legends speak of dire lords capable of mastering the crippling power of fear, with some able to manipulate the 'essence' of living things — even their very blood.",
-  },
-  {
-    name: "Druid",
-    id: 9,
-    summary:
-      "Amidst the fragmented realms, the wild-eyed druid embraces the diverse, natural world, peering into its mysteries. Druids are revered as visionaries who can see into the heart of terminus.",
-  },
-];
-
-export async function TopNav() {
+export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
   return (
     <nav className="flex w-full justify-center border-b">
       <div className="flex w-full max-w-screen-xl items-center justify-between p-4">
