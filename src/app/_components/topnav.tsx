@@ -35,9 +35,7 @@ export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/classes" legacyBehavior passHref>
-                  <NavigationMenuTrigger>Classes</NavigationMenuTrigger>
-                </Link>
+                <NavigationMenuTrigger>Classes</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     <ListItem title="Browse Classes" href="/classes" liClassName="md:col-span-2">
