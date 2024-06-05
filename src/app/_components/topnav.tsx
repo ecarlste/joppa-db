@@ -44,12 +44,7 @@ export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
                     {playerClasses
                       .sort((a, b) => a.name.localeCompare(b.name))
                       .map((playerClass) => (
-                        <ListItem
-                          liClassName=""
-                          key={playerClass.id}
-                          title={playerClass.name}
-                          href={`/classes/${playerClass.id}`}
-                        >
+                        <ListItem key={playerClass.id} title={playerClass.name} href={`/classes/${playerClass.id}`}>
                           {playerClass.summary}
                         </ListItem>
                       ))}
@@ -75,8 +70,8 @@ export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { liClassName: string }
->(({ className, title, children, liClassName = "", ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { liClassName?: string }
+>(({ className, title, children, liClassName, ...props }, ref) => {
   return (
     <li className={liClassName}>
       <NavigationMenuLink asChild>
