@@ -14,12 +14,13 @@ import {
 } from "~/components/ui/navigation-menu";
 import { cn } from "~/lib/utils";
 import { type PlayerClass } from "~/server/db/schema";
+import { MobileNav } from "./mobile-nav";
 
 export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
   return (
     <nav className="flex w-full justify-center border-b">
-      <div className="flex w-full max-w-screen-xl items-center justify-between p-4">
-        <div className="flex space-x-4">
+      <div className="flex h-14 w-full max-w-screen-xl items-center justify-between">
+        <div className="hidden sm:flex sm:space-x-4">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -55,7 +56,11 @@ export function TopNav({ playerClasses }: { playerClasses: PlayerClass[] }) {
           </NavigationMenu>
         </div>
 
-        <div>
+        <div className="flex space-x-4 sm:hidden">
+          <MobileNav playerClasses={playerClasses} />
+        </div>
+
+        <div className="flex items-center px-4 py-2">
           <SignedOut>
             <SignInButton />
           </SignedOut>
